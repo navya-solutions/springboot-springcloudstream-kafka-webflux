@@ -54,10 +54,10 @@ public class DespatchAdviceServiceImpl implements DespatchAdviceService {
 
     }
 
-    @NotNull
     /**
      * validate -  supplier and customer should be part of the despatch advice
      */
+    @NotNull
     private DespatchAdvice validateDespatchAdviceEvent(DespatchAdvice despatchAdvice, DespatchAdvice despatchAdvice1) {
         if (despatchAdvice1.getDespatchSupplierParty() == null) {
             throw new DataValidationException

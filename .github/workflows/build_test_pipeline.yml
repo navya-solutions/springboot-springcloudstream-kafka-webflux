@@ -1,0 +1,37 @@
+name: Develop CI/CD pipeline
+on:
+  push:
+    branches: [ main,develop ]
+  workflow_dispatch:
+
+jobs:
+  build-test:
+    name: build-test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+      actions: read
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v3.8.0
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Set up Maven
+        uses: stCarolas/setup-maven@v4.5
+        with:
+          maven-version: 3.8.2
+
+      - name: Maven Verify
+        run: mvn -B clean package
+
+      - name: Upload JaCoCo coverage report as a workflow artifact
+        uses: actions/upload-artifact@v3.1.1
+        with:
+          name: jacoco-report
+          path: target/site/jacoco/

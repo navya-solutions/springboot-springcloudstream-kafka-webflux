@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import java.io.Serializable;
 
@@ -51,9 +52,9 @@ public class DespatchAdvice implements Serializable {
      */
     private String orderReferenceId;
 
-    @DBRef
+    @DocumentReference
     private DespatchSupplierParty despatchSupplierParty;
 
-    @DBRef
+    @DocumentReference
     private DeliveryCustomerParty deliveryCustomerParty;
 }

@@ -19,10 +19,7 @@
 2. Use preferred IDE to
    run [OrderServiceApplication.java](src/main/java/com/ns/os/OrderServiceApplication.java)
    OR use command prompt to run
-3.
-
-Use [postman collection](infra/postman/postman_collection.json)
-for sending despatch advice events
+3. Use [postman collection](infra/postman/postman_collection.json) for sending despatch advice events
 
 4. Use MongoDB client or Kafka client to view the events
 
@@ -50,8 +47,8 @@ mvn spring-boot:run
 * Event send to the Kafka, logic defined
   in [DespatchAdviceHandler](src/main/java/com/ns/os/api/controller/DespatchAdviceHandler.java)
 * Event consume by the application
-  using [DespatchAdviceEventConsumer](src/main/java/com/ns/os/kafka/consumer/DespatchAdviceEventConsumer.java), validate and
-  store it in MongoDB database
+  using [DespatchAdviceEventConsumer](src/main/java/com/ns/os/kafka/consumer/DespatchAdviceEventConsumer.java). 
+  Events are , error events to and store it in MongoDB database
 
 ## DO-TO List
 

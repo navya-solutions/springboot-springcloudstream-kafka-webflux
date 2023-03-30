@@ -30,15 +30,15 @@ public class DespatchAdviceEventConsumer {
     public Function<Flux<List<DespatchAdvice>>, Mono<Void>> processDespatchAdvice() {
         return event -> event
                 //.retryWhen(Retry.backoff(3, Duration.ofMillis(1000)))
-                .map(despatchAdvice -> {
-                    despatchAdvice.forEach(despatchAdvice1 -> {
+                .map(despatchAdviceList -> {
+                    despatchAdviceList.forEach(despatchAdvice -> {
                         log.info("Data received from order-fulfillment..." + despatchAdvice);
-                        despatchAdviceService.save(despatchAdvice1)
-                                .onErrorResume(throwable -> fallback(throwable, despatchAdvice1))
+                        despatchAdviceService.save(despatchAdvice)
+                                .onErrorContinue((error, data) -> fallback(error, (DespatchAdvice) data))
                                 .subscribeOn(Schedulers.boundedElastic())
                                 .subscribe();
                     });
-                    return despatchAdvice;
+                    return despatchAdviceList;
                 })
                 .then();
     }

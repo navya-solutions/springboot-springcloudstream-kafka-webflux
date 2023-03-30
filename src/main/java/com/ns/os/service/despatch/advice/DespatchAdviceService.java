@@ -8,7 +8,7 @@ import reactor.core.publisher.Mono;
 public interface DespatchAdviceService {
     Mono<Void> save(final DespatchAdvice despatchAdvice);
 
-    Flux<DespatchAdvice> getOrderDespatchAdvices(String orderId, PageRequest pageRequest);
+    Flux<DespatchAdvice> getOrderDespatchAdvices(final String orderId, final PageRequest pageRequest);
 
 
 }

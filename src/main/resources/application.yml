@@ -13,8 +13,6 @@ spring:
             batch-mode: true
             auto-startup: true
             max-attempts: 3
-
-
   kafka:
     consumer:
       # Event consumption starts either at the earliest offset or the latest offset.
