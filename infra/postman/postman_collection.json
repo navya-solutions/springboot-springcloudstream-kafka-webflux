@@ -1,0 +1,52 @@
+{
+	"info": {
+		"_postman_id": "1f699988-5f60-46b8-a1b9-fce45d14193c",
+		"name": "kafka-app-events",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1672358"
+	},
+	"item": [
+		{
+			"name": "despatch-advice",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customizationId\": \"urn:fdc:peppol.eu:poacc:trns:despatch_advice:3\",\r\n    \"profileId\": \"urn:fdc:peppol.eu:poacc:bis:despatch_advice:3\",\r\n    \"identifier\": \"{{$guid}}\",\r\n    \"orderReferenceId\": \"{{$guid}}\",\r\n    \"note\": \"Use Case 5 Demonstrates the use of most of the existing terms available in the Despatch advice message\",\r\n    \"despatchSupplierParty\": {\r\n        \"party\": {\r\n            \"registrationName\": \"Consortial\",\r\n            \"partyIdentificationId\": \"7385000000124\",\r\n            \"partyEndpointId\": \"7385000000124\"\r\n        }\r\n    },\r\n    \"deliveryCustomerParty\": {\r\n        \"party\": {\r\n            \"registrationName\": \"IYT Corporation\",\r\n            \"partyIdentificationId\": \"7398000000124\",\r\n            \"partyEndpointId\": \"7390000435951\"\r\n        },\r\n        \"deliveryContact\": {\r\n            \"name\": \"Tony Erwing\",\r\n            \"telephone\": \"01272653214\",\r\n            \"electronicMail\": \"tony@buyer.se\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/order/despatch-advice",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"order",
+						"despatch-advice"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

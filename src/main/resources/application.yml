@@ -1,0 +1,53 @@
+spring:
+  cloud:
+    stream:
+      binder:
+        brokers: localhost
+        defaultBrokerPort: 9092
+        autoCreateTopics: true
+      bindings:
+        processDespatchAdvice-in-0:
+          destination: ${app.order.binding.name}
+          group: ${app.order.binding.group}
+          consumer:
+            batch-mode: true
+            auto-startup: true
+            max-attempts: 3
+
+
+  kafka:
+    consumer:
+      # Event consumption starts either at the earliest offset or the latest offset.
+      auto-offset-reset: earliest
+      value-deserializer: com.ns.os.kafka.consumer.CustomDeserializer
+      max-poll-records: 3
+      group-id: despatch-advice
+
+  data:
+    mongodb:
+      uri: ${DB_URL:mongodb://admin:fulfilment@localhost:27018/}
+      database: ${DB:order-fulfilment}
+
+app:
+  order:
+    binding:
+      name: order-fulfillment
+      group: despatch-advice
+  error:
+    binding:
+      name: order-fulfillment-error
+      group: despatch-advice-error
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bindings
+springdoc:
+  swagger-ui:
+    path: /doc
+  show-actuator: true
+
+
+
