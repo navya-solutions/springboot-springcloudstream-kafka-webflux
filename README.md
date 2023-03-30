@@ -12,16 +12,16 @@
 ## How to run application locally
 
 1. Run the docker compose file to get all project external dependencies. The docker compose file is available in
-   the [infra](https://github.com/navya-solutions/springboot-springcloudstream-kafka-webflux/infra/docker-compose)
+   the [infra](infra/docker-compose)
    folder.
    There are two versions of docker compose file is provided to run the minimum and extensive
-   infrastructure. [For more details](https://github.com/navya-solutions/springboot-springcloudstream-kafka-webflux/infra/docker-compose/README.md)
+   infrastructure. [For more details](infra/docker-compose/README.md)
 2. Use preferred IDE to
-   run [OrderServiceApplication.java](https://github.com/navya-solutions/springboot-springcloudstream-kafka-webflux/src/main/java/com/ns/os/OrderServiceApplication.java)
+   run [OrderServiceApplication.java](src/main/java/com/ns/os/OrderServiceApplication.java)
    OR use command prompt to run
 3.
 
-Use [postman collection](https://github.com/navya-solutions/springboot-springcloudstream-kafka-webflux/infra/postman/postman_collection.json)
+Use [postman collection](infra/postman/postman_collection.json)
 for sending despatch advice events
 
 4. Use MongoDB client or Kafka client to view the events
@@ -41,7 +41,7 @@ mvn spring-boot:run
 
 ## Application Architecture
 
-![Architecture](https://github.com/navya-solutions/springboot-springcloudstream-kafka-webflux/infra/architecture.png)
+![Architecture](infra/architecture/architecture.png)
 
 ### Application event flow
 
